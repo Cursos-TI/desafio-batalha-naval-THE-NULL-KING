@@ -3,6 +3,7 @@
 // Desafio Batalha Naval - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
 // Siga os comentários para implementar cada parte do desafio.
+#define navio 3
 
 int main() {
     // Nível Novato - Posicionamento dos Navios
@@ -11,25 +12,70 @@ int main() {
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
     int navioh[3] = {3, 3, 3};
     int naviov[3] = {3, 3, 3};
-    int tabuleiro[10][10] = {
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-    };
+    int tabuleiro[10][10];
+    int z;
 
     for(int x = 0; x < 10; x++){
         for(int y = 0; y < 10; y++){
-            printf("%d ", tabuleiro[x][y]);
+            
+            tabuleiro[x][y] = 0; 
+        }
+        
+    }
+
+    for(int x = 0; x < 10; x++){
+        for(int y = 0; y < 10; y++){
+            
+            if(tabuleiro[x][y + 3]){
+                tabuleiro[x][y] = 3;
+            } 
+        }
+        
+    }
+
+    for(int x = 0, y = 0, z = 0; x < 10, y < 10, z < navio; x++, y++, z++){
+        if(x == y){
+                
+            tabuleiro[x][y] = 3;
+        }
+    }
+
+    
+    for(int x = 0; x < 10; x++){
+        for(int y = 0; y < 10; y++){
+        
+
+            if(tabuleiro[x][9 - y]){
+            
+                tabuleiro[x][y] = 3;
+            }
+        }
+    }
+        
+    
+
+    for(int x = 0; x < 10; x++){
+        for(int y = 0; y < 10; y++){
+            
+            printf("%d ", tabuleiro[x][y]); 
         }
         printf("\n");
     }
+    /*for(z = 0; z < navio; z++){
+        for(int x = 0; x < 10; x++){
+            for(int y = 0; y < 10; y++){
+            
+
+                if(x == y){
+                
+                    tabuleiro[x][y] = 3;
+                }
+                printf("%d ", tabuleiro[x][y]);
+            }
+            printf("\n");
+        }
+        
+    }*/
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
